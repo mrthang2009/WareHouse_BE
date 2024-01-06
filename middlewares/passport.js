@@ -34,7 +34,7 @@ const VerifyAccountEmployee = new LocalStrategy(
       const user = await Employee.findOne({
         isDeleted: false,
         email,
-      }).populate("avatar");
+      }).populate("media");
 
       if (!user) return done(null, false);
 

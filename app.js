@@ -47,12 +47,12 @@ passport.use(ConfigBasicEmployee);
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/employees", employeesRouter);
-// app.use(
-//   "/employees",
-//   passport.authenticate("jwt", { session: false }),
-//   employeesRouter
-// );
+// app.use("/employees", employeesRouter);
+app.use(
+  "/employees",
+  passport.authenticate("jwt", { session: false }),
+  employeesRouter
+);
 app.use(
   "/categories",
   passport.authenticate("jwt", { session: false }),

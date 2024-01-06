@@ -18,6 +18,7 @@ const categorySchema = new Schema(
     mediaId: {
       type: Schema.Types.ObjectId,
       ref: "medias",
+      default: null,
     },
     isDeleted: {
       type: Boolean,

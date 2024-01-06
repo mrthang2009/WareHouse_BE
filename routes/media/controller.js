@@ -150,7 +150,7 @@ module.exports = {
 
         const employee = await Employee.findOneAndUpdate(
           { _id: id },
-          { avatarId: media._id },
+          { mediaId: media._id },
           { new: true }
         );
 

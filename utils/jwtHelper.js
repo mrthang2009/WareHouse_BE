@@ -22,7 +22,6 @@ const generateToken = (user) => {
 
 const generateRefreshToken = (id) => {
   const expiresIn = "30d";
-
   return JWT.sign({ id }, jwtSettings.SECRET, { expiresIn });
 };
 const generateVerificationCode = () => {

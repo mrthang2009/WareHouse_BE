@@ -31,7 +31,7 @@ module.exports = {
       //   });
       // }
       const password = "Haha@123"; // Giá trị mặc định cho password
-      const avatarId = null;
+      const mediaId = null;
 
       const newCustomer = new Customer({
         firstName,
@@ -39,7 +39,7 @@ module.exports = {
         email,
         password,
         phoneNumber,
-        avatarId,
+        mediaId,
         birthday: birthday ? birthday : null,
         address: address ? address : null,
       });

@@ -14,14 +14,14 @@ let storedVerificationCode; // Đặt biến ngoài phạm vi hàm
 module.exports = {
   login: async (req, res, next) => {
     try {
-      const { _id, firstName, lastName, typeRole, avatar } = req.user;
+      const { _id, firstName, lastName, typeRole, media } = req.user;
 
       const token = generateToken({
         _id,
         firstName,
         lastName,
         typeRole,
-        avatar: avatar?.avatarUrl || null,
+        avatar: media?.avatarUrl || null,
       });
       const refreshToken = generateRefreshToken(_id);
 

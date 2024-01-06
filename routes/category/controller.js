@@ -79,7 +79,7 @@ module.exports = {
       const newCategory = new Category({
         name,
         description: description || null,
-        // imageId: media._id,
+        mediaId: null,
       });
       const savedCategory = await newCategory.save();
       return res.status(200).json({

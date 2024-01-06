@@ -15,7 +15,7 @@ module.exports = {
       } = req.body;
 
       const password = "Haha@123"; // Giá trị mặc định cho password
-      const avatarId = null;
+      const mediaId = null;
 
       const newEmployee = new Employee({
         firstName,
@@ -24,7 +24,7 @@ module.exports = {
         password,
         phoneNumber,
         typeRole,
-        avatarId,
+        mediaId,
         birthday: birthday ? birthday : null,
         address: address ? address : null,
       });
@@ -44,7 +44,7 @@ module.exports = {
       const payload = await Employee.find({ isDeleted: false })
         .select("-password")
         .populate({
-          path: "avatar",
+          path: "media",
           select: "-_id -name -imageUrls -coverImageUrl -createdAt -updatedAt",
         });
       const total = payload.length;
@@ -68,7 +68,7 @@ module.exports = {
       const skip = limit * (page - 1) || 0;
       let payload = await Employee.find({ isDeleted: false })
         .populate({
-          path: "avatar",
+          path: "media",
           select: "-_id -name -imageUrls -coverImageUrl -createdAt -updatedAt",
         })
         .select("-password")
@@ -98,7 +98,7 @@ module.exports = {
       })
         .select("-password")
         .populate({
-          path: "avatar",
+          path: "media",
           select: "-_id -name -imageUrls -coverImageUrl -createdAt -updatedAt",
         })
         .exec();
@@ -124,7 +124,7 @@ module.exports = {
         isDeleted: false,
       })
         .populate({
-          path: "avatar",
+          path: "media",
           select: "-_id -name -imageUrls -coverImageUrl -createdAt -updatedAt",
         })
         .select("-password");
@@ -234,7 +234,7 @@ module.exports = {
       })
         .sort({ lastName: 1 })
         .populate({
-          path: "avatar",
+          path: "media",
           select: "-_id -name -imageUrls -coverImageUrl -createdAt -updatedAt",
         })
         .select("-password");
