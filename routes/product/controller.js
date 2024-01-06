@@ -14,7 +14,7 @@ const upload = multer({
 });
 
 module.exports = {
- createProduct: async (req, res, next) => {
+  createProduct: async (req, res, next) => {
     const {
       name,
       price,
@@ -48,7 +48,9 @@ module.exports = {
 
       // Tạo mã QR từ ID của sản phẩm
       const productId = savedProduct._id.toString();
-      const qrCodeData = `ProductId: ${productId}`;
+      const qrCodeData = JSON.stringify({
+        productId: productId,
+      });
       // Tạo hình ảnh QRCode
       const qrCodeBuffer = await qrcode.toBuffer(qrCodeData);
 
