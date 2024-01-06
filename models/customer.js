@@ -45,10 +45,9 @@ const customerSchema = new Schema(
       minLength: [8, "Password: must be at least 8 characters"],
       maxLength: [20, "Password: cannot exceed 20 characters"],
     },
-    avatarId: {
+    mediaId: {
       type: Schema.Types.ObjectId,
       ref: "medias",
-      default: null,
     },
     birthday: {
       type: Date
@@ -109,10 +108,10 @@ const customerSchema = new Schema(
 
 // Virtual with Populate
 customerSchema.virtual("media", {
-  ref: "medias",
-  localField: "avatarId",
-  foreignField: "_id",
-  justOne: true,
+  ref: "medias", // Tên model data tham chiếu
+  localField: "mediaId", // Field trong data hiện tại đem đi tham chiếu
+  foreignField: "_id", // Field tham chiếu trong data tham chiếu
+  justOne: true, // Mỗi sản phẩm chỉ thuộc về một danh mục
 });
 // Virtual with Populate
 customerSchema.virtual("cart", {

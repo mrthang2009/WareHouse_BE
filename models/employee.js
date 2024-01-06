@@ -61,10 +61,9 @@ const employeeSchema = new Schema(
       },
       unique: [true, " Phone number must be unique"],
     },
-    avatarId: {
+    mediaId: {
       type: Schema.Types.ObjectId,
       ref: "medias",
-      default: null,
     },
     address: {
       type: String,
@@ -92,11 +91,11 @@ employeeSchema.virtual("fullName").get(function () {
   return `${this.lastName} ${this.firstName}`;
 });
 // Virtual with Populate
-employeeSchema.virtual("avatar", {
-  ref: "medias",
-  localField: "avatarId",
-  foreignField: "_id",
-  justOne: true,
+employeeSchema.virtual("media", {
+  ref: "medias", // Tên model data tham chiếu
+  localField: "mediaId", // Field trong data hiện tại đem đi tham chiếu
+  foreignField: "_id", // Field tham chiếu trong data tham chiếu
+  justOne: true, // Mỗi sản phẩm chỉ thuộc về một danh mục
 });
 
 // Virtual with Populate

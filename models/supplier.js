@@ -34,10 +34,9 @@ const supplierSchema = new Schema(
       },
       unique: [true, " Phone number must be unique"],
     },
-    coverImageUrl: {
+    mediaId: {
       type: Schema.Types.ObjectId,
       ref: "medias",
-      default: null,
     },
     address: {
       type: String,
@@ -55,12 +54,12 @@ const supplierSchema = new Schema(
     timestamps: true, // Tự động thêm trường createdAt và updatedAt
   }
 );
-// Virtual with Populate
+
 supplierSchema.virtual("media", {
-  ref: "medias",
-  localField: "coverImageUrl",
-  foreignField: "_id",
-  justOne: true,
+  ref: "medias", // Tên model data tham chiếu
+  localField: "mediaId", // Field trong data hiện tại đem đi tham chiếu
+  foreignField: "_id", // Field tham chiếu trong data tham chiếu
+  justOne: true, // Mỗi sản phẩm chỉ thuộc về một danh mục
 });
 // Virtuals in console.log()
 supplierSchema.set("toObject", { virtuals: true });

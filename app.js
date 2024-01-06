@@ -18,7 +18,6 @@ var suppliersRouter = require("./routes/supplier/router");
 var productsRouter = require("./routes/product/router");
 var ordersRouter = require("./routes/order/router");
 var mediasRouter = require("./routes/media/router");
-var deliveriesRouter = require("./routes/delivery/router");
 
 // Khai báo DB và kết nối đến đường dẫn DB
 const { CONNECTION_STRING, DB_NAME } = require("./constants/db");
@@ -48,21 +47,16 @@ passport.use(ConfigBasicEmployee);
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-// app.use("/employees", employeesRouter);
-app.use(
-  "/employees",
-  passport.authenticate("jwt", { session: false }),
-  employeesRouter
-);
+app.use("/employees", employeesRouter);
+// app.use(
+//   "/employees",
+//   passport.authenticate("jwt", { session: false }),
+//   employeesRouter
+// );
 app.use(
   "/categories",
   passport.authenticate("jwt", { session: false }),
   categoriesRouter
-);
-app.use(
-  "/deliveries",
-  passport.authenticate("jwt", { session: false }),
-  deliveriesRouter
 );
 app.use(
   "/products",

@@ -15,10 +15,9 @@ const categorySchema = new Schema(
       maxLength: [500, "Category description: cannot exceed 500 characters"],
       default: null,
     },
-    imageId: {
+    mediaId: {
       type: Schema.Types.ObjectId,
       ref: "medias",
-      default: null,
     },
     isDeleted: {
       type: Boolean,
@@ -34,7 +33,7 @@ const categorySchema = new Schema(
 // Tạo trường ảo "media" để tham chiếu đến hình ảnh sản phẩm
 categorySchema.virtual("media", {
   ref: "medias", // Tên model data tham chiếu
-  localField: "imageId", // Field trong data hiện tại đem đi tham chiếu
+  localField: "mediaId", // Field trong data hiện tại đem đi tham chiếu
   foreignField: "_id", // Field tham chiếu trong data tham chiếu
   justOne: true, // Mỗi sản phẩm chỉ thuộc về một danh mục
 });
