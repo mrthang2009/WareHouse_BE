@@ -4,8 +4,8 @@ const JWT = require("jsonwebtoken");
 const jwtSettings = require("../constants/jwtSettings");
 
 const generateToken = (user) => {
-  const expiresIn = "12h"; //Thời gian hết hạn
-  const algorithm = "HS25s6";
+  const expiresIn = "10h"; //Thời gian hết hạn
+  const algorithm = "HS256";
 
   return JWT.sign(
     {
